@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{ title }} </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load static %}
+
+        <!-- dynamic css generation -->
+        {% if app_name %}
+            <link rel="stylesheet" href="{% static app_name|add:'.css' %}">
+        {% else %}
+            <link rel="stylesheet" href="{% static 'RecipeProject/stylesheet.css' %}">
+        {% endif %}
+        
+        
+        {% load bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar Navigation (2 columns) -->
+                <div class="col-md-2 bg-dark text-white">
+                    {% block navigation %}
+                        {% include 'RecipeProject/navigation.html' %}
+                    {% endblock %}
+                </div>
+
+                <!-- Main Content (10 columns) -->
+                <div class="col-md-10">
+                    {% block content %}  
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+
+        {% block footer %}
+        {% endblock %}
+    </body>
+</html>

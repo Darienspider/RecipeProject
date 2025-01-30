@@ -1,0 +1,31 @@
+{% extends 'RecipeProject/main.html' %}
+
+{% block content %}
+<h1> Recipes </h1>
+
+<h4> Below is a list of all Recipes </h4>
+    {% for recipe in recipes %}
+        <div class="recipe_panel">
+            <p> {{ recipe.title }} </p>
+            <p> {{ recipe.description }} </p>
+            <h4>Ingredients:</h4>
+            {% for ingredient in recipe.ingredients_set.all %}
+                <p>• {{ ingredient.ingredient }}</p>
+            {% empty %}
+                <p>No ingredients listed.</p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+
+<h4> Below is a list of available recipes based on your inventory </h4>
+<ul class="recipe-list-available">
+    {% for recipe in available_recipes %}
+        <li class="list-group"> </li>
+    {% endfor %}
+</ul>
+
+
+
+{% endblock %}
+
