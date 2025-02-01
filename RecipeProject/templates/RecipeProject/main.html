@@ -15,6 +15,8 @@
         <!-- dynamic css generation -->
         {% if app_name %}
             <link rel="stylesheet" href="{% static app_name|add:'.css' %}">
+            <link rel="stylesheet" href="{% static 'RecipeProject/stylesheet.css' %}">
+
         {% else %}
             <link rel="stylesheet" href="{% static 'RecipeProject/stylesheet.css' %}">
         {% endif %}
@@ -25,24 +27,15 @@
         {% bootstrap_javascript %}
     </head>
     <body>
-        <div class="container-fluid">
-            <div class="row">
-                <!-- Sidebar Navigation (2 columns) -->
-                <div class="col-md-2 bg-dark text-white">
-                    {% block navigation %}
-                        {% include 'RecipeProject/navigation.html' %}
-                    {% endblock %}
-                </div>
+        {% block navigation %}
+        {% include 'RecipeProject/navigation.html' %}
+        {% endblock %}
 
-                <!-- Main Content (10 columns) -->
-                <div class="col-md-10">
-                    {% block content %}  
-                    {% endblock %}
-                </div>
-            </div>
-        </div>
+        {% block content %}  
+        {% endblock %}
 
         {% block footer %}
+        {% include 'RecipeProject/footer.html' %}
         {% endblock %}
     </body>
 </html>

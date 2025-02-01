@@ -22,9 +22,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', view = projectHome, name = 'projectHome'),
-    path('Blog/', include('Blog.urls')),
-    path('Recipe/', include('Recipe.urls')),
-    path('Inventory/', include('Inventory.urls')),
-    path('Profile/', include('Profile.urls')),
+    path('Blog/', include('Blog.urls'), name="BlogMain"),
+    path('Recipe/', include('Recipe.urls'), name = "recipeMain"),
+    path('Inventory/', include('Inventory.urls'), name = "inventoryMain"),
+    path('Profile/', include('Profile.urls'), name = "profileMain"),
     path("Login/" , name='login', view=login_view),  # handles logins, logouts, etc
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
