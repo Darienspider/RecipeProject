@@ -160,7 +160,9 @@ STATICFILES_DIRS = [
 ]
 STATICFILES_DIRS += [os.path.join(BASE_DIR, app,'static',app) for app in personal_apps]
 
+MEDIA_URL = '/media/'
 
+MEDIA_DIRS = [os.path.join(BASE_DIR, app, f'{app}_images') for app in personal_apps]
 
 
 

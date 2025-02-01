@@ -7,13 +7,18 @@
     {% for recipe in recipes %}
         <div class="recipe_panel">
             <p> {{ recipe.title }} </p>
+            <img src = "{{recipe.image.url}}">
             <p> {{ recipe.description }} </p>
+
             <h4>Ingredients:</h4>
-            {% for ingredient in recipe.ingredients_set.all %}
-                <p>• {{ ingredient.ingredient }}</p>
-            {% empty %}
-                <p>No ingredients listed.</p>
-            {% endfor %}
+            <div class="ingredients">
+                {% for ingredient in recipe.ingredients_set.all %}
+                    <p>• {{ ingredient.ingredient }}</p>
+                {% empty %}
+                    <p>No ingredients listed.</p>
+                {% endfor %}
+            </div>
+
         </div>
     {% endfor %}
 
